@@ -117,7 +117,7 @@ class TopicController extends Controller
 
     public function search(Request $request) {
   
-        $result = Topic::where('titre', '=', "%o%")->get();
+        $result = Topic::where('titre', 'Like', "%o%")->get();
         dd($result);
         //return redirect()->route('topics.index'); avec param pour filter le result
 
