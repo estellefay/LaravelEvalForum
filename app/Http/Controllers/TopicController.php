@@ -16,7 +16,7 @@ class TopicController extends Controller
     {
         //
         $topics = Topic::all();
-        //return view('topics', ['topics' => $topics]);
+        return view('index', ['topics' => $topics]);
     }
 
     /**
@@ -26,8 +26,8 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
-        //return view('topics.create');
+        
+        return view('create');
 
     }
 
@@ -40,7 +40,7 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         //
-
+        dd($request);
         $topic = new Topic;
         $topic->titre = $request->titre;
         $topic->prix = $request->message;
@@ -58,9 +58,9 @@ class TopicController extends Controller
     public function show($id)
     {
         //
-        $topic = Topic::findOrFail($id);
-        dd($topic);
-        //return view('admin.voyage.detail', ['topic' => $topic]
+        $topic = Topic::findOrFail($id);       
+        return view('show', ['topic' => $topic]);
+        // A ajouter recup les commentaire
     }
 
     /**
@@ -73,7 +73,7 @@ class TopicController extends Controller
     {
         //
         $topic = Topic::findOrFail($id);
-        //return view('admin.voyage.update', ['topic' => $topic]);
+        return view('edit', ['topic' => $topic]);
     }
 
     /**
@@ -86,10 +86,11 @@ class TopicController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
         $topic->titre = $request->titre;
         $topic->prix = $request->message;
         $voyage->save();
-        //return redirect()->route('topics.index');
+        return redirect()->route('index');
 
     }
 
@@ -104,7 +105,7 @@ class TopicController extends Controller
         //
         $topic = Topic::find($id);
         $topic->delete();
-        //return redirect()->route('topics.index');
+        return redirect()->route('home');
     }
 
     //Id est l'id du topic
