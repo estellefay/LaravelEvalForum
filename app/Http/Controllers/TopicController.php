@@ -108,7 +108,7 @@ class TopicController extends Controller
     }
 
     //Id est l'id du topic
-    public function comment(Request $request, $id) {
+    public function commentaire(Request $request, $id) {
         $commentaire = new Commentaire;
         $commentaire->content = $request->content;
         $commentaire->topic_id = $request->id;
